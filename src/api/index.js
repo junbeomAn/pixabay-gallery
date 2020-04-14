@@ -42,13 +42,6 @@ export const getImagesByPage = async page => {
 };
 
 export const useIntersectionObserver = ({ target, callback, threshold }) => {
-  // if (!target) {
-  //   return;
-  // }
-  // const observer = new IntersectionObserver(callback);
-  // console.log(target);
-  // observer.observe(target);
-
   useEffect(() => {
     if (!target) {
       return;
@@ -56,13 +49,10 @@ export const useIntersectionObserver = ({ target, callback, threshold }) => {
     const observer = new IntersectionObserver(callback, {
       threshold
     });
-    // console.log(target);
+
     observer.observe(target);
     return () => {
-      console.log("unobserve");
       observer.unobserve(target);
     };
   }, [callback, target, threshold]);
-
-  // target.forEach(t => observer.observe(t));
 };

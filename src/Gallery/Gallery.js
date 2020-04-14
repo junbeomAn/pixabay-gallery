@@ -42,9 +42,7 @@ const Gallery = ({ query, handleImageClick }) => {
     threshold: 0.5,
     callback: (entries, observer) => {
       entries.forEach(entry => {
-        console.log(entry);
         if (entry.intersectionRatio <= 0 || loading || noResults) {
-          // observer.unobserve(entry.target);
           return;
         }
         getMoreImage();
@@ -84,7 +82,7 @@ const Gallery = ({ query, handleImageClick }) => {
         setNoResults(true);
       }
     } catch (err) {
-      console.log("error!!!!!!");
+      setError(err);
     } finally {
       setLoading(false);
     }
@@ -100,7 +98,7 @@ const Gallery = ({ query, handleImageClick }) => {
         setNoResults(true);
       }
     } catch (err) {
-      console.log("error!!!!!!");
+      setError(err);
     } finally {
       setLoading(false);
     }
